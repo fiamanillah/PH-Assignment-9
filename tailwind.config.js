@@ -19,47 +19,64 @@ export default {
 			},
 			colors: {
 				// Light Mode Colors
-				background: "#f2f7ff",
-				primary: "#1e293b",
-				secondary: "#64748b",
-				accent: "#3b82f6",
-				info: "#38bdf8",
-				success: "#22c55e",
-				warning: "#f59e0b",
-				danger: "#ef4444",
-				lightPrimaryText: "#1e293b",
-				lightSecondaryText: "#475569",
-				lightCard: "#ffffff",
-				lightCardSecondary: "#ebf2ff",
-				lightCardHover: "#f2f7ff",
+				background: "#f5f7fc", // Light Background
+				primary: "#2c3a64", // Dark Purple-Blue (Primary)
+				secondary: "#5a6a8c", // Muted Purple-Blue (Secondary)
+				accent: "#5b5fe0", // Purplish Blue (Accent)
+				info: "#7c83ed", // Light Purplish Blue (Info)
+				success: "#22c55e", // Green (Success)
+				warning: "#eab308", // Golden Yellow (Warning)
+				danger: "#e94e60", // Coral Red (Danger)
+				lightPrimaryText: "#1f2937", // Dark Gray (Primary Text)
+				lightSecondaryText: "#4b5563", // Medium Gray (Secondary Text)
+				lightCard: "#ffffff", // White (Card Background)
+				lightCardSecondary: "#eceffd", // Light Purplish Blue (Card Secondary)
+				lightCardHover: "#f2f4fc", // Very Light Purplish Blue (Card Hover)
 
 				// Dark Mode Colors
-				darkBackground: "#0a101c",
-				darkCard: "#212b3b",
-				darkCardSecondary: "#1a2333",
-				darkCardHover: "#3a414d",
-				darkPrimary: "#f1f5f9",
-				darkSecondary: "#94a3b8",
-				darkAccent: "#60a5fa",
-				darkInfo: "#38bdf8",
-				darkSuccess: "#4ade80",
-				darkWarning: "#fbbf24",
-				darkDanger: "#f87171",
-				darkPrimaryText: "#e2e8f0",
-				darkSecondaryText: "#cbd5e1",
+				darkBackground: "#121b3a", // Very Dark Purple-Blue (Background)
+				darkCard: "#1e2a50", // Dark Purple-Blue (Card Background)
+				darkCardSecondary: "#2a3a5c", // Darker Purple-Blue (Card Secondary)
+				darkCardHover: "#404b6e", // Muted Purplish Blue (Card Hover)
+				darkPrimary: "#d4d9f3", // Light Grayish Blue (Primary Text)
+				darkSecondary: "#a8b2d3", // Light Purple-Blue Gray (Secondary Text)
+				darkAccent: "#7a7ffd", // Light Purplish Blue (Accent)
+				darkInfo: "#9297f9", // Lighter Purplish Blue (Info)
+				darkSuccess: "#34d399", // Light Green (Success)
+				darkWarning: "#facc15", // Soft Yellow (Warning)
+				darkDanger: "#fb7185", // Soft Red (Danger)
+				darkPrimaryText: "#e2e8f0", // Light Gray (Primary Text)
+				darkSecondaryText: "#cbd5e1", // Lighter Gray (Secondary Text)
 
+				// Neutral Grays
 				gray: {
-					50: "#f9fafb",
-					100: "#f3f4f6",
-					200: "#e5e7eb",
-					300: "#d1d5db",
-					400: "#9ca3af",
-					500: "#6b7280",
-					600: "#4b5563",
-					700: "#374151",
-					800: "#1f2937",
-					900: "#111827",
+					50: "#f8fafc", // White Smoke
+					100: "#f1f5f9", // Light Gray
+					200: "#e2e8f0", // Very Light Gray
+					300: "#cbd5e1", // Light Gray
+					400: "#9ca3af", // Cool Gray
+					500: "#6b7280", // Gray
+					600: "#4b5563", // Dark Gray
+					700: "#374151", // Charcoal
+					800: "#1f2937", // Dark Charcoal
+					900: "#111827", // Almost Black
 				},
+
+				// Additional Colors for Career Consulting
+				highlight: "#d75baf", // Pinkish Purple (Highlight)
+				positive: "#10b981", // Emerald Green (Positive)
+				neutral: "#eab3c3", // Soft Blush Pink (Neutral)
+				link: "#5a4fcf", // Purplish Blue (Links)
+				callToAction: "#e67c34", // Bright Orange (Call to Action)
+				backdrop: "#f1f4fa", // Off White (Backdrop)
+				lightShadow: "#e2e7f1", // Light Grayish Blue Shadow
+				darkShadow: "#2a3550", // Darker Blue-Purple Shadow
+
+				// Accent Shades
+				softPurple: "#b794f4", // Light Purple (Accent)
+				softTeal: "#4fd1c5", // Teal (Accent)
+				softYellow: "#fcd34d", // Light Yellow (Highlight)
+				darkPurple: "#6b21a8", // Deep Purple (Accent)
 			},
 
 			typography: {
