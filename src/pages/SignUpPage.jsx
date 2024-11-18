@@ -10,19 +10,49 @@ import { IoEyeOffOutline } from 'react-icons/io5'
 function SignUpPage() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
     const [displayName, setDisplayName] = useState('')
     const [showPassword, setShowPassword] = useState(false)
     const [photoURL, setPhotoURL] = useState('')
+    const [error, setError] = useState('')
+
     const { loginWithGoogle, registerWithEmail, user } = useAuth()
     const navigate = useNavigate()
+
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/
+
     const handleRegister = async e => {
         e.preventDefault()
+
+
+
+        // Validate password
+        if (!passwordRegex.test(password)) {
+            setError(
+                'Password must be at least 8 characters long, contain an uppercase letter, a number, and a special character.'
+            )
+            return
+        }
+
+        // Check if password and confirm password match
+        if (password !== confirmPassword) {
+            setError('Passwords do not match.')
+            return
+        }
+
         try {
-            // Call registerWithEmail with email, password, name, and photo URL
             await registerWithEmail(email, password, displayName, photoURL)
-            // history.push('/dashboard')
-            navigate('/')
+            navigate('/user-profile')
             console.log(user)
+        } catch (error) {
+            console.error('Registration error:', error.message)
+        }
+    }
+
+    const handleGoogleLogin = async () => {
+        try {
+            await loginWithGoogle()
+            navigate('/user-profile')
         } catch (error) {
             console.error('Registration error:', error.message)
         }
@@ -30,7 +60,7 @@ function SignUpPage() {
 
     return (
         <Section>
-            <div className="flex flex-col items-center justify-center px-6 py-8 h-screen mx-auto">
+            <div className="flex flex-col items-center justify-center px-6 py-8  mx-auto">
                 <Link
                     to={'/'}
                     className="flex items-center mb-6 text-2xl font-semibold no-underline text-accent hover:text-accent uppercase"
@@ -46,13 +76,17 @@ function SignUpPage() {
 
                         <button
                             className="flex items-center justify-center text-primary dark:text-darkPrimary gap-2 bg-lightCardSecondary border border-gray-300  rounded-lg w-full p-2.5 dark:bg-darkCardSecondary dark:border-gray-600 dark:placeholder-gray-40 "
-                            onClick={loginWithGoogle}
+                            onClick={() => {
+                                handleGoogleLogin
+                            }}
                         >
                             <FcGoogle className="text-2xl" />
                             Continue with Google
                         </button>
 
                         <form className="space-y-4 md:space-y-6" onSubmit={handleRegister}>
+                            {error && <p className="!text-red-500 text-sm">{error}</p>}
+
                             <div>
                                 <label htmlFor="name" className="block mb-2 text-sm font-medium">
                                     Your Name
@@ -129,6 +163,37 @@ function SignUpPage() {
                                     </button>
                                 </div>
                             </div>
+                            <div>
+                                <label
+                                    htmlFor="password"
+                                    className="block mb-2 text-sm font-medium"
+                                >
+                                    Confirm Password
+                                </label>
+                                <div className="relative">
+                                    <input
+                                        type={showPassword ? 'text' : 'password'}
+                                        name="confirmPassword"
+                                        id="confirmPassword"
+                                        placeholder="••••••••"
+                                        value={confirmPassword}
+                                        onChange={e => setConfirmPassword(e.target.value)}
+                                        className="bg-lightCardSecondary border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 pr-10 dark:bg-darkCardSecondary dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-accent dark:focus:border-accent"
+                                        required
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                        className="absolute inset-y-0 right-0 flex items-center pr-3 text-xl focus:outline-none"
+                                    >
+                                        {showPassword ? (
+                                            <MdOutlineRemoveRedEye />
+                                        ) : (
+                                            <IoEyeOffOutline />
+                                        )}
+                                    </button>
+                                </div>
+                            </div>
                             <div className="flex items-center justify-between">
                                 <div className="flex items-start">
                                     <div className="flex items-center h-5">
@@ -150,7 +215,7 @@ function SignUpPage() {
                                     </div>
                                 </div>
                                 <Link
-                                    to={'#'}
+                                    to={'/reset-password'}
                                     className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
                                 >
                                     Forgot password?
@@ -158,10 +223,10 @@ function SignUpPage() {
                             </div>
 
                             <Button type="submit" className="w-full text-white bg-accent">
-                                Sign in
+                                Sign Up
                             </Button>
                             <p className="text-sm font-light text-babg-lightCardSecondary0 dark:text-gray-400">
-                                Already have a account?{' '}
+                                Already have an account?{' '}
                                 <Link
                                     to={'/login'}
                                     className="font-medium text-primary-600 hover:underline dark:text-primary-500"

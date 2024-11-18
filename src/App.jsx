@@ -1,3 +1,4 @@
+import Modal from './components/Modal'
 import Header from './layouts/Header'
 
 import { Outlet } from 'react-router-dom'
@@ -8,6 +9,7 @@ function App() {
             <div>
                 <Header />
                 <Outlet />
+                <Modal />
             </div>
         </div>
     )

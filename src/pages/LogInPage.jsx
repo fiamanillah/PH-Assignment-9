@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Button from '../components/Button'
 import Section from '../layouts/Section'
 import { FcGoogle } from 'react-icons/fc'
@@ -6,20 +6,60 @@ import { useAuth } from '../context/AuthContext'
 import { useState } from 'react'
 import { MdOutlineRemoveRedEye } from 'react-icons/md'
 import { IoEyeOffOutline } from 'react-icons/io5'
+import { useModal } from '../context/ModalContext'
 
 function LogInPage() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [showPassword, setShowPassword] = useState(false)
+    const navigate = useNavigate()
+    const { showModal, hideModal } = useModal()
 
-    const { loginWithGoogle, loginWithEmail, logout } = useAuth()
+    const { loginWithGoogle, loginWithEmail } = useAuth()
 
     const handleEmailLogin = async e => {
         e.preventDefault()
         try {
             await loginWithEmail(email, password)
+            await navigate('/user-profile')
         } catch (error) {
+            showModal(
+                <div>
+                    <h2 className="text-xl font-bold">Failed to Log in</h2>
+                    <p>{error.message}</p>
+                    <Button
+                        className="mt-4 bg-blue-500 text-white p-2 rounded"
+                        onClick={() => {
+                            hideModal()
+                        }}
+                    >
+                        Try Again
+                    </Button>
+                </div>
+            )
             console.error('Failed to log in:', error.message)
+        }
+    }
+    const handleGoogleLogin = async () => {
+        try {
+            await loginWithGoogle()
+            navigate('/user-profile')
+        } catch (error) {
+            showModal(
+                <div>
+                    <h2 className="text-xl font-bold">Password reset mail sent</h2>
+                    <p>{error.message}</p>
+                    <Button
+                        className="mt-4 bg-blue-500 text-white p-2 rounded"
+                        onClick={() => {
+                            hideModal()
+                        }}
+                    >
+                        Log In
+                    </Button>
+                </div>
+            )
+            console.error('Registration error:', error.message)
         }
     }
     return (
@@ -40,7 +80,7 @@ function LogInPage() {
 
                         <button
                             className="flex items-center justify-center text-primary dark:text-darkPrimary gap-2 bg-lightCardSecondary border border-gray-300  rounded-lg w-full p-2.5 dark:bg-darkCardSecondary dark:border-gray-600 dark:placeholder-gray-40 "
-                            onClick={loginWithGoogle}
+                            onClick={handleGoogleLogin}
                         >
                             <FcGoogle className="text-2xl" />
                             Continue with Google
@@ -113,7 +153,7 @@ function LogInPage() {
                                     </div>
                                 </div>
                                 <Link
-                                    to={'#'}
+                                    to={'/reset-password'}
                                     className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
                                 >
                                     Forgot password?
@@ -123,13 +163,7 @@ function LogInPage() {
                             <Button type="submit" className="w-full text-white bg-accent">
                                 Sign in
                             </Button>
-                            <Button
-                                type="button"
-                                className="w-full text-white bg-accent"
-                                onClick={logout}
-                            >
-                                Sign Out
-                            </Button>
+                        
 
                             <p className="text-sm font-light text-babg-lightCardSecondary0 dark:text-gray-400">
                                 Don’t have an account yet?{' '}

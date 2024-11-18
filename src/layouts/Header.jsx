@@ -25,10 +25,12 @@ function Header() {
                 </div>
                 <div className="flex items-center gap-2">
                     {loading ? (
-                        <LiaSpinnerSolid className="animate-spin text-3xl" />
+                        <LiaSpinnerSolid className="animate-spin text-3xl text-primary dark:text-darkPrimary" />
                     ) : user ? (
                         <button className="w-10 rounded-full overflow-hidden">
-                            <img src={user?.photoURL} alt="" />
+                            <Link to={'/user-profile'}>
+                                <img src={user?.photoURL} alt="" />
+                            </Link>
                         </button>
                     ) : (
                         <Link to={'/login'}>

@@ -6,6 +6,8 @@ import HomePage from '../pages/HomePage'
 import LogInPage from '../pages/LogInPage'
 import SignUpPage from '../pages/SignUpPage'
 import PrivateRoute from '../components/PrivateRoute'
+import ForgotPassword from '../pages/ForgotPassword'
+import UserProfile from '../pages/UserProfile'
 
 const router = createBrowserRouter([
     {
@@ -31,6 +33,18 @@ const router = createBrowserRouter([
             {
                 path: 'register',
                 element: <SignUpPage />,
+            },
+            {
+                path: 'reset-password',
+                element: <ForgotPassword />,
+            },
+            {
+                path: 'user-profile',
+                element: (
+                    <PrivateRoute>
+                        <UserProfile />
+                    </PrivateRoute>
+                ),
             },
         ],
     },
