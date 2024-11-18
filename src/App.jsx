@@ -1,12 +1,16 @@
-import { Outlet } from "react-router-dom";
+import Header from './layouts/Header'
+
+import { Outlet } from 'react-router-dom'
 
 function App() {
-	return (
-		<div className="prose max-w-none">
-			<h1 className="text-red-400">Hello</h1>
-			<Outlet />
-		</div>
-	);
+    return (
+        <div className="prose max-w-none">
+            <div>
+                <Header />
+                <Outlet />
+            </div>
+        </div>
+    )
 }
 
-export default App;
+export default App
