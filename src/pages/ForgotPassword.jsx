@@ -5,7 +5,7 @@ import Section from '../layouts/Section'
 import { useAuth } from '../context/AuthContext'
 import { useState } from 'react'
 import { useModal } from '../context/ModalContext'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
 function ForgotPassword() {
     const [email, setEmail] = useState('')

@@ -4,19 +4,16 @@ import Section from '../layouts/Section'
 import { FcGoogle } from 'react-icons/fc'
 import { useAuth } from '../context/AuthContext'
 import { useState } from 'react'
-import { MdOutlineRemoveRedEye } from 'react-icons/md'
-import { IoEyeOffOutline } from 'react-icons/io5'
 import { useModal } from '../context/ModalContext'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
+import InputField from '../components/InputField'
+import PasswordInput from '../components/PasswordInput'
 
 function SignUpPage() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [displayName, setDisplayName] = useState('')
-    const [showPassword, setShowPassword] = useState(false)
-
-    const [showConfirmPassword, setConfirmShowPassword] = useState(false)
     const [photoURL, setPhotoURL] = useState('')
     const [error, setError] = useState('')
     const { showModal, hideModal } = useModal()
@@ -122,113 +119,58 @@ function SignUpPage() {
                         <form className="space-y-4 md:space-y-6" onSubmit={handleRegister}>
                             {error && <p className="!text-red-500 text-sm">{error}</p>}
 
-                            <div>
-                                <label htmlFor="name" className="block mb-2 text-sm font-medium">
-                                    Your Name
-                                </label>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    id="name"
-                                    onChange={e => setDisplayName(e.target.value)}
-                                    className="bg-lightCardSecondary border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-darkCardSecondary dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-accent dark:focus:border-accent"
-                                    placeholder="Enter your name"
-                                    required
-                                />
-                            </div>
-                            <div className="mt-4">
-                                <label
-                                    htmlFor="photoURL"
-                                    className="block mb-2 text-sm font-medium"
-                                >
-                                    Profile Photo URL
-                                </label>
-                                <input
-                                    type="url"
-                                    name="photoURL"
-                                    id="photoURL"
-                                    onChange={e => setPhotoURL(e.target.value)}
-                                    className="bg-lightCardSecondary border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-darkCardSecondary dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-accent dark:focus:border-accent"
-                                    placeholder="https://example.com/photo.jpg"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="email" className="block mb-2 text-sm font-medium">
-                                    Your email
-                                </label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    id="email"
-                                    onChange={e => setEmail(e.target.value)}
-                                    className="bg-lightCardSecondary border border-gray-300  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-darkCardSecondary dark:border-gray-600 dark:placeholder-gray-40 dark:focus:ring-accent dark:focus:border-accent"
-                                    placeholder="name@example.com"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label
-                                    htmlFor="password"
-                                    className="block mb-2 text-sm font-medium"
-                                >
-                                    Password
-                                </label>
-                                <div className="relative">
-                                    <input
-                                        type={showPassword ? 'text' : 'password'}
-                                        name="password"
-                                        id="password"
-                                        placeholder="••••••••"
-                                        value={password}
-                                        onChange={e => setPassword(e.target.value)}
-                                        className="bg-lightCardSecondary border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 pr-10 dark:bg-darkCardSecondary dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-accent dark:focus:border-accent"
-                                        required
-                                    />
-                                    <button
-                                        type="button"
-                                        onClick={() => setShowPassword(!showPassword)}
-                                        className="absolute inset-y-0 right-0 flex items-center pr-3 text-xl focus:outline-none"
-                                    >
-                                        {showPassword ? (
-                                            <MdOutlineRemoveRedEye />
-                                        ) : (
-                                            <IoEyeOffOutline />
-                                        )}
-                                    </button>
-                                </div>
-                            </div>
-                            <div>
-                                <label
-                                    htmlFor="password"
-                                    className="block mb-2 text-sm font-medium"
-                                >
-                                    Confirm Password
-                                </label>
-                                <div className="relative">
-                                    <input
-                                        type={showConfirmPassword ? 'text' : 'password'}
-                                        name="confirmPassword"
-                                        id="confirmPassword"
-                                        placeholder="••••••••"
-                                        value={confirmPassword}
-                                        onChange={e => setConfirmPassword(e.target.value)}
-                                        className="bg-lightCardSecondary border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 pr-10 dark:bg-darkCardSecondary dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-accent dark:focus:border-accent"
-                                        required
-                                    />
-                                    <button
-                                        type="button"
-                                        onClick={() => setConfirmShowPassword(!showConfirmPassword)}
-                                        className="absolute inset-y-0 right-0 flex items-center pr-3 text-xl focus:outline-none"
-                                    >
-                                        {showConfirmPassword ? (
-                                            <MdOutlineRemoveRedEye />
-                                        ) : (
-                                            <IoEyeOffOutline />
-                                        )}
-                                    </button>
-                                </div>
-                            </div>
+                            <InputField
+                                label="Your Name"
+                                type="text"
+                                name="name"
+                                id="name"
+                                placeholder="Enter your name"
+                                value={displayName}
+                                onChange={e => setDisplayName(e.target.value)}
+                                required={true}
+                            />
+
+                            <InputField
+                                label="Profile Photo URL"
+                                type="url"
+                                name="photoURL"
+                                id="photoURL"
+                                placeholder="https://example.com/photo.jpg"
+                                value={photoURL}
+                                onChange={e => setPhotoURL(e.target.value)}
+                                required={true}
+                            />
+
+                            <InputField
+                                label="Your email"
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="name@example.com"
+                                value={email}
+                                onChange={e => setEmail(e.target.value)}
+                                required={true}
+                            />
+
+                            <PasswordInput
+                                label="Your password"
+                                name="password"
+                                id="password"
+                                placeholder="••••••••"
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
+                                required={true}
+                            />
+                            <PasswordInput
+                                label="Confirm Password"
+                                name="confirmPassword"
+                                id="confirmPassword"
+                                placeholder="••••••••"
+                                value={confirmPassword}
+                                onChange={e => setConfirmPassword(e.target.value)}
+                                required={true}
+                            />
+
                             <div className="flex items-center justify-between">
                                 <div className="flex items-start">
                                     <div className="flex items-center h-5">

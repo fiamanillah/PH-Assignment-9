@@ -1,3 +1,4 @@
+import Footer from './components/Footer'
 import Modal from './components/Modal'
 import Header from './layouts/Header'
 
@@ -9,6 +10,7 @@ function App() {
             <div>
                 <Header />
                 <Outlet />
+                <Footer />
                 <Modal />
             </div>
         </div>

@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "image": "https://fi.amanillah.com/img/assignment-9/slider1.jpg",
+        "heading": "Shape Your Career, Shape Your Future!",
+        "subheading": "With personalized guidance from experienced professionals, we provide you with the tools and support to navigate your career journey and reach your true potential. Whether you're just starting or looking to level up, we're here to help every step of the way.",
+        "buttonText": "Get Started",
+        "buttonLink": "/login"
+    },
+    {
+        "id": 2,
+        "image": "https://fi.amanillah.com/img/assignment-9/slider2.jpg",
+        "heading": "Unlock Your Potential!",
+        "subheading": "Everyone has untapped potential waiting to be discovered. Our tailored counseling services help you identify your strengths, overcome obstacles, and set achievable goals that will lead to long-term success. Let’s unlock your true career potential together.",
+        "buttonText": "Learn More",
+        "buttonLink": "/learn-more"
+    },
+    {
+        "id": 3,
+        "image": "https://fi.amanillah.com/img/assignment-9/slider3.jpg",
+        "heading": "Hear From Our Success Stories!",
+        "subheading": "Thousands of satisfied clients have successfully transformed their careers with our expert guidance. From job seekers to seasoned professionals, our personalized approach has helped many unlock new opportunities and achieve their career goals. Let their stories inspire you to take the next step.",
+        "buttonText": "See Testimonials",
+        "buttonLink": "/testimonials"
+    },
+    {
+        "id": 4,
+        "image": "https://fi.amanillah.com/img/assignment-9/slider4.jpg",
+        "heading": "Redefine Career Counseling!",
+        "subheading": "Our approach to career counseling combines modern strategies with a deep understanding of the ever-evolving job market. We equip you with the skills and knowledge to navigate challenges and seize opportunities in today’s competitive workforce. Together, we’ll redefine your career path.",
+        "buttonText": "Explore More",
+        "buttonLink": "/services"
+    },
+    {
+        "id": 5,
+        "image": "https://fi.amanillah.com/img/assignment-9/slider5.jpg",
+        "heading": "Your Career Awaits!",
+        "subheading": "The career of your dreams is within reach. With the right guidance, you can take the first step toward new opportunities, gain confidence in your skills, and chart a course toward long-term success. It’s time to make your career aspirations a reality, starting today.",
+        "buttonText": "Contact Us",
+        "buttonLink": "/contact"
+    }
+]

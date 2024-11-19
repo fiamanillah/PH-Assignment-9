@@ -5,7 +5,7 @@ import { LiaSpinnerSolid } from 'react-icons/lia'
 import Button from '../components/Button'
 import { useNavigate } from 'react-router-dom'
 import { useModal } from '../context/ModalContext'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
 function UserProfile() {
     const { user, updateUserProfile, logout } = useAuth()
@@ -73,14 +73,16 @@ function UserProfile() {
                 <title>Career Craft | Profile</title>
             </Helmet>
             <div className="min-h-screen w-full">
-                <h1 className="text-2xl font-bold mb-6">Profile</h1>
-
                 <div className="flex flex-col max-w-screen-lg mx-auto">
+                    <h1 className="text-2xl font-bold mb-6">Profile</h1>
                     <div className="">
-                        <div className="w-32 h-32 rounded-full overflow-hidden">
+                        <div className="w-32 h-32 rounded-full border-2 overflow-hidden">
                             <img
                                 className="w-full h-full object-cover"
-                                src={user?.photoURL || 'https://via.placeholder.com/150'}
+                                src={
+                                    user?.photoURL ||
+                                    'https://fi.amanillah.com/img/assignment-9/placeholder.png'
+                                }
                                 alt="Profile"
                                 aria-label="Profile Picture"
                             />

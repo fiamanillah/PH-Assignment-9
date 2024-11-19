@@ -4,15 +4,14 @@ import Section from '../layouts/Section'
 import { FcGoogle } from 'react-icons/fc'
 import { useAuth } from '../context/AuthContext'
 import { useState } from 'react'
-import { MdOutlineRemoveRedEye } from 'react-icons/md'
-import { IoEyeOffOutline } from 'react-icons/io5'
 import { useModal } from '../context/ModalContext'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
+import InputField from '../components/InputField'
+import PasswordInput from '../components/PasswordInput'
 
 function LogInPage() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [showPassword, setShowPassword] = useState(false)
     const navigate = useNavigate()
     const { showModal, hideModal } = useModal()
 
@@ -91,51 +90,26 @@ function LogInPage() {
                         </button>
 
                         <form className="space-y-4 md:space-y-6" onSubmit={handleEmailLogin}>
-                            <div>
-                                <label htmlFor="email" className="block mb-2 text-sm font-medium">
-                                    Your email
-                                </label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    id="email"
-                                    onChange={e => setEmail(e.target.value)}
-                                    className="bg-lightCardSecondary border border-gray-300  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-darkCardSecondary dark:border-gray-600 dark:placeholder-gray-40 dark:focus:ring-accent dark:focus:border-accent"
-                                    placeholder="name@example.com"
-                                    required=""
-                                />
-                            </div>
-                            <div>
-                                <label
-                                    htmlFor="password"
-                                    className="block mb-2 text-sm font-medium"
-                                >
-                                    Password
-                                </label>
-                                <div className="relative">
-                                    <input
-                                        type={showPassword ? 'text' : 'password'}
-                                        name="password"
-                                        id="password"
-                                        placeholder="••••••••"
-                                        value={password}
-                                        onChange={e => setPassword(e.target.value)}
-                                        className="bg-lightCardSecondary border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 pr-10 dark:bg-darkCardSecondary dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-accent dark:focus:border-accent"
-                                        required
-                                    />
-                                    <button
-                                        type="button"
-                                        onClick={() => setShowPassword(!showPassword)}
-                                        className="absolute inset-y-0 right-0 flex items-center pr-3 text-xl focus:outline-none"
-                                    >
-                                        {showPassword ? (
-                                            <MdOutlineRemoveRedEye />
-                                        ) : (
-                                            <IoEyeOffOutline />
-                                        )}
-                                    </button>
-                                </div>
-                            </div>
+                            <InputField
+                                label="Your email"
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="name@example.com"
+                                value={email}
+                                onChange={e => setEmail(e.target.value)}
+                                required={true}
+                            />
+
+                            <PasswordInput
+                                label="Your password"
+                                name="password"
+                                id="password"
+                                placeholder="••••••••"
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
+                                required={true}
+                            />
                             <div className="flex items-center justify-between">
                                 <div className="flex items-start">
                                     <div className="flex items-center h-5">

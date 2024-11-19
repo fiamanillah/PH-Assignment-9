@@ -1,5 +1,7 @@
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import Section from '../layouts/Section'
+import Slider from '../components/Slider'
+import Services from '../components/Services'
 
 function HomePage() {
     return (
@@ -7,7 +9,10 @@ function HomePage() {
             <Helmet>
                 <title>Career Craft | Home</title>
             </Helmet>
-            <h1>HomePage</h1>
+            <div className="min-h-screen">
+                <Slider />
+                <Services />
+            </div>
         </Section>
     )
 }

@@ -41,9 +41,16 @@ function Header() {
                     ) : (
                         user && (
                             <Tooltip text={user?.displayName} position="bottom">
-                                <button className="w-10 rounded-full overflow-hidden">
+                                <button className="w-10 h-10 rounded-full overflow-hidden border-2">
                                     <Link to={'/user-profile'}>
-                                        <img src={user?.photoURL} alt="" />
+                                        <img
+                                            className="object-cover w-10 h-10"
+                                            src={
+                                                user?.photoURL ||
+                                                'https://fi.amanillah.com/img/assignment-9/placeholder.png'
+                                            }
+                                            alt=""
+                                        />
                                     </Link>
                                 </button>
                             </Tooltip>

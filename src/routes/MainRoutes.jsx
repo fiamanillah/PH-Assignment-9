@@ -8,6 +8,7 @@ import SignUpPage from '../pages/SignUpPage'
 import PrivateRoute from '../components/PrivateRoute'
 import ForgotPassword from '../pages/ForgotPassword'
 import UserProfile from '../pages/UserProfile'
+import ServiceDetails from '../pages/ServiceDetails'
 
 const router = createBrowserRouter([
     {
@@ -43,6 +44,14 @@ const router = createBrowserRouter([
                 element: (
                     <PrivateRoute>
                         <UserProfile />
+                    </PrivateRoute>
+                ),
+            },
+            {
+                path: 'service-details/:serviceId',
+                element: (
+                    <PrivateRoute>
+                        <ServiceDetails />
                     </PrivateRoute>
                 ),
             },
