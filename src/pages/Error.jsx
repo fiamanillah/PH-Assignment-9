@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom'
 import Section from '../layouts/Section'
+import { Helmet } from 'react-helmet'
 
 function Error() {
     return (
         <Section className={'prose max-w-none'}>
+            <Helmet>
+                <title>Page not found</title>
+            </Helmet>
             <div className="flex z-10 flex-col items-center justify-center h-screen">
                 <img className="max-w-[300px] m-0" src="/404.png" alt="" />
                 <p className="text-lg mb-3 mt-0">

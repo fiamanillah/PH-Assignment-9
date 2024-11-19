@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { MdOutlineRemoveRedEye } from 'react-icons/md'
 import { IoEyeOffOutline } from 'react-icons/io5'
 import { useModal } from '../context/ModalContext'
+import { Helmet } from 'react-helmet'
 
 function LogInPage() {
     const [email, setEmail] = useState('')
@@ -47,7 +48,7 @@ function LogInPage() {
         } catch (error) {
             showModal(
                 <div>
-                    <h2 className="text-xl font-bold">Password reset mail sent</h2>
+                    <h2 className="text-xl font-bold">Failed to Log In</h2>
                     <p>{error.message}</p>
                     <Button
                         className="mt-4 bg-blue-500 text-white p-2 rounded"
@@ -55,7 +56,7 @@ function LogInPage() {
                             hideModal()
                         }}
                     >
-                        Log In
+                        Try Again
                     </Button>
                 </div>
             )
@@ -64,6 +65,9 @@ function LogInPage() {
     }
     return (
         <Section>
+            <Helmet>
+                <title>Career Craft | Log In</title>
+            </Helmet>
             <div className="flex flex-col items-center justify-center px-6 py-8 h-screen mx-auto">
                 <Link
                     to={'/'}
@@ -163,7 +167,6 @@ function LogInPage() {
                             <Button type="submit" className="w-full text-white bg-accent">
                                 Sign in
                             </Button>
-                        
 
                             <p className="text-sm font-light text-babg-lightCardSecondary0 dark:text-gray-400">
                                 Don’t have an account yet?{' '}

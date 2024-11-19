@@ -6,6 +6,8 @@ import { useAuth } from '../context/AuthContext'
 import { useState } from 'react'
 import { MdOutlineRemoveRedEye } from 'react-icons/md'
 import { IoEyeOffOutline } from 'react-icons/io5'
+import { useModal } from '../context/ModalContext'
+import { Helmet } from 'react-helmet'
 
 function SignUpPage() {
     const [email, setEmail] = useState('')
@@ -13,18 +15,19 @@ function SignUpPage() {
     const [confirmPassword, setConfirmPassword] = useState('')
     const [displayName, setDisplayName] = useState('')
     const [showPassword, setShowPassword] = useState(false)
+
+    const [showConfirmPassword, setConfirmShowPassword] = useState(false)
     const [photoURL, setPhotoURL] = useState('')
     const [error, setError] = useState('')
+    const { showModal, hideModal } = useModal()
 
     const { loginWithGoogle, registerWithEmail, user } = useAuth()
     const navigate = useNavigate()
 
-    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/
 
     const handleRegister = async e => {
         e.preventDefault()
-
-
 
         // Validate password
         if (!passwordRegex.test(password)) {
@@ -45,6 +48,20 @@ function SignUpPage() {
             navigate('/user-profile')
             console.log(user)
         } catch (error) {
+            showModal(
+                <div>
+                    <h2 className="text-xl font-bold">Failed to Sign Up</h2>
+                    <p>{error.message}</p>
+                    <Button
+                        className="mt-4 bg-blue-500 text-white p-2 rounded"
+                        onClick={() => {
+                            hideModal()
+                        }}
+                    >
+                        Try Again
+                    </Button>
+                </div>
+            )
             console.error('Registration error:', error.message)
         }
     }
@@ -54,12 +71,30 @@ function SignUpPage() {
             await loginWithGoogle()
             navigate('/user-profile')
         } catch (error) {
+            showModal(
+                <div>
+                    <h2 className="text-xl font-bold">Failed to Sign Up</h2>
+                    <p>{error.message}</p>
+                    <Button
+                        className="mt-4 bg-blue-500 text-white p-2 rounded"
+                        onClick={() => {
+                            hideModal()
+                        }}
+                    >
+                        Try Again
+                    </Button>
+                </div>
+            )
             console.error('Registration error:', error.message)
         }
     }
 
     return (
         <Section>
+            <Helmet>
+                <title>Career Craft | Sign Up</title>
+            </Helmet>
+
             <div className="flex flex-col items-center justify-center px-6 py-8  mx-auto">
                 <Link
                     to={'/'}
@@ -172,7 +207,7 @@ function SignUpPage() {
                                 </label>
                                 <div className="relative">
                                     <input
-                                        type={showPassword ? 'text' : 'password'}
+                                        type={showConfirmPassword ? 'text' : 'password'}
                                         name="confirmPassword"
                                         id="confirmPassword"
                                         placeholder="••••••••"
@@ -183,10 +218,10 @@ function SignUpPage() {
                                     />
                                     <button
                                         type="button"
-                                        onClick={() => setShowPassword(!showPassword)}
+                                        onClick={() => setConfirmShowPassword(!showConfirmPassword)}
                                         className="absolute inset-y-0 right-0 flex items-center pr-3 text-xl focus:outline-none"
                                     >
-                                        {showPassword ? (
+                                        {showConfirmPassword ? (
                                             <MdOutlineRemoveRedEye />
                                         ) : (
                                             <IoEyeOffOutline />

@@ -5,6 +5,7 @@ import Section from '../layouts/Section'
 import { useAuth } from '../context/AuthContext'
 import { useState } from 'react'
 import { useModal } from '../context/ModalContext'
+import { Helmet } from 'react-helmet'
 
 function ForgotPassword() {
     const [email, setEmail] = useState('')
@@ -34,6 +35,9 @@ function ForgotPassword() {
 
     return (
         <Section>
+            <Helmet>
+            <title>Career Craft | Forgot Password</title>
+            </Helmet>
             <div className="flex flex-col items-center justify-center px-6 py-8 h-screen mx-auto">
                 <Link
                     to={'/'}

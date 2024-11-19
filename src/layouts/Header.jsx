@@ -6,10 +6,15 @@ import DarkModeSwitch from '../components/DarkModeSwitch'
 import useDarkMode from '../hooks/useDarkMode'
 import { useAuth } from '../context/AuthContext'
 import { LiaSpinnerSolid } from 'react-icons/lia'
+import Tooltip from '../components/Tooltip'
 
 function Header() {
     const { darkMode } = useDarkMode()
-    const { user, loading } = useAuth()
+    const { user, loading, logout } = useAuth()
+
+    const handleLogOut = () => {
+        logout()
+    }
     return (
         <Section className={' shadow-lg shadow-white'}>
             <div className="flex items-center justify-between w-full py-1">
@@ -21,18 +26,30 @@ function Header() {
                             <img className="h-16" src="/CareerCraft_Accent.svg" alt="" />
                         )}
                     </Link>
-                    <MainNavBar />
+                    <div className="flex items-center">
+                        <MainNavBar />
+                        {user && (
+                            <Button className="bg-accent text-darkPrimary" onClick={handleLogOut}>
+                                Log Out
+                            </Button>
+                        )}
+                    </div>
                 </div>
                 <div className="flex items-center gap-2">
                     {loading ? (
                         <LiaSpinnerSolid className="animate-spin text-3xl text-primary dark:text-darkPrimary" />
-                    ) : user ? (
-                        <button className="w-10 rounded-full overflow-hidden">
-                            <Link to={'/user-profile'}>
-                                <img src={user?.photoURL} alt="" />
-                            </Link>
-                        </button>
                     ) : (
+                        user && (
+                            <Tooltip text={user?.displayName} position="bottom">
+                                <button className="w-10 rounded-full overflow-hidden">
+                                    <Link to={'/user-profile'}>
+                                        <img src={user?.photoURL} alt="" />
+                                    </Link>
+                                </button>
+                            </Tooltip>
+                        )
+                    )}
+                    {!user && (
                         <Link to={'/login'}>
                             <Button className="bg-accent text-darkPrimary">Log in</Button>
                         </Link>

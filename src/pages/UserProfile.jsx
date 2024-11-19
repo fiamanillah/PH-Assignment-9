@@ -5,6 +5,7 @@ import { LiaSpinnerSolid } from 'react-icons/lia'
 import Button from '../components/Button'
 import { useNavigate } from 'react-router-dom'
 import { useModal } from '../context/ModalContext'
+import { Helmet } from 'react-helmet'
 
 function UserProfile() {
     const { user, updateUserProfile, logout } = useAuth()
@@ -68,6 +69,9 @@ function UserProfile() {
 
     return (
         <Section>
+            <Helmet>
+                <title>Career Craft | Profile</title>
+            </Helmet>
             <div className="min-h-screen w-full">
                 <h1 className="text-2xl font-bold mb-6">Profile</h1>
 
