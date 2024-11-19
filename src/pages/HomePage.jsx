@@ -4,6 +4,7 @@ import Slider from '../components/Slider'
 import Services from '../components/Services'
 import Testimonial from '../components/Testimonial'
 import BrandsSlide from '../components/BrandsSlide'
+import SuccessStories from '../components/SucessStories'
 
 function HomePage() {
     return (
@@ -16,6 +17,7 @@ function HomePage() {
                 <BrandsSlide />
                 <Services />
                 <Testimonial />
+                <SuccessStories />
             </div>
         </Section>
     )
