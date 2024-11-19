@@ -13,7 +13,7 @@
         "heading": "Unlock Your Potential!",
         "subheading": "Everyone has untapped potential waiting to be discovered. Our tailored counseling services help you identify your strengths, overcome obstacles, and set achievable goals that will lead to long-term success. Let’s unlock your true career potential together.",
         "buttonText": "Learn More",
-        "buttonLink": "/learn-more"
+        "buttonLink": "#faqs"
     },
     {
         "id": 3,
@@ -21,7 +21,7 @@
         "heading": "Hear From Our Success Stories!",
         "subheading": "Thousands of satisfied clients have successfully transformed their careers with our expert guidance. From job seekers to seasoned professionals, our personalized approach has helped many unlock new opportunities and achieve their career goals. Let their stories inspire you to take the next step.",
         "buttonText": "See Testimonials",
-        "buttonLink": "/testimonials"
+        "buttonLink": "#testimonials"
     },
     {
         "id": 4,

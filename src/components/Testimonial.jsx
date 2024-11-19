@@ -3,7 +3,7 @@ import Section from '../layouts/Section'
 export default function Testimonial() {
     return (
         <Section>
-            <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
+            <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6" id='testimonials'>
                 <div className="mx-auto max-w-screen-sm">
                     <h2 className="mb-4 text-4xl tracking-tight font-extrabold">Testimonials</h2>
                     <p className="mb-8 font-light lg:mb-16 sm:text-xl">

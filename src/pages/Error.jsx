@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async'
 
 function Error() {
     return (
-        <Section className={'prose max-w-none'}>
+        <Section className={'prose max-w-none fixed inset-0 '}>
             <Helmet>
                 <title>Page not found</title>
             </Helmet>
