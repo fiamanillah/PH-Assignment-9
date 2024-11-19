@@ -8,7 +8,7 @@ import { useModal } from '../context/ModalContext'
 import { Helmet } from 'react-helmet-async'
 import InputField from '../components/InputField'
 import PasswordInput from '../components/PasswordInput'
-
+import { LiaSpinnerSolid } from 'react-icons/lia'
 function SignUpPage() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -18,7 +18,7 @@ function SignUpPage() {
     const [error, setError] = useState('')
     const { showModal, hideModal } = useModal()
 
-    const { loginWithGoogle, registerWithEmail, user } = useAuth()
+    const { loginWithGoogle, registerWithEmail, user, loading } = useAuth()
     const navigate = useNavigate()
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/
@@ -108,9 +108,7 @@ function SignUpPage() {
 
                         <button
                             className="flex items-center justify-center text-primary dark:text-darkPrimary gap-2 bg-lightCardSecondary border border-gray-300  rounded-lg w-full p-2.5 dark:bg-darkCardSecondary dark:border-gray-600 dark:placeholder-gray-40 "
-                            onClick={() => {
-                                handleGoogleLogin
-                            }}
+                            onClick={handleGoogleLogin}
                         >
                             <FcGoogle className="text-2xl" />
                             Continue with Google
@@ -198,10 +196,19 @@ function SignUpPage() {
                                     Forgot password?
                                 </Link>
                             </div>
+                            {loading ? (
+                                <Button
+                                    type="button"
+                                    className="w-full text-white bg-accent flex justify-center"
+                                >
+                                    <LiaSpinnerSolid className="animate-spin text-2xl" />
+                                </Button>
+                            ) : (
+                                <Button type="submit" className="w-full text-white bg-accent">
+                                    Sign Up
+                                </Button>
+                            )}
 
-                            <Button type="submit" className="w-full text-white bg-accent">
-                                Sign Up
-                            </Button>
                             <p className="text-sm font-light text-babg-lightCardSecondary0 dark:text-gray-400">
                                 Already have an account?{' '}
                                 <Link

@@ -10,8 +10,9 @@ import { Link } from 'react-router-dom'
 export default function Services() {
     const { services } = useServices()
     return (
-        <Section>
-            <div className="grid grid-cols-3 gap-3">
+        <Section className={"mt-5"}>
+            <h1 className='my-3 mt-5'>Services</h1>
+            <div className="grid grid-cols-3 tablet-lg:grid-cols-2 mobile-sm:grid-cols-1 gap-3">
                 {services?.map(service => (
                     <div
                         key={service.id}

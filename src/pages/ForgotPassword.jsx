@@ -6,10 +6,10 @@ import { useAuth } from '../context/AuthContext'
 import { useState } from 'react'
 import { useModal } from '../context/ModalContext'
 import { Helmet } from 'react-helmet-async'
-
+import { LiaSpinnerSolid } from 'react-icons/lia'
 function ForgotPassword() {
     const [email, setEmail] = useState('')
-    const { resetPassword } = useAuth()
+    const { resetPassword, loading } = useAuth()
     const navigate = useNavigate()
 
     const { showModal, hideModal } = useModal()
@@ -36,7 +36,7 @@ function ForgotPassword() {
     return (
         <Section>
             <Helmet>
-            <title>Career Craft | Forgot Password</title>
+                <title>Career Craft | Forgot Password</title>
             </Helmet>
             <div className="flex flex-col items-center justify-center px-6 py-8 h-screen mx-auto">
                 <Link
@@ -76,9 +76,18 @@ function ForgotPassword() {
                                 />
                             </div>
 
-                            <Button type="submit" className="w-full text-white bg-accent">
-                                Reset
-                            </Button>
+                            {loading ? (
+                                <Button
+                                    type="button"
+                                    className="w-full text-white bg-accent flex justify-center"
+                                >
+                                    <LiaSpinnerSolid className="animate-spin text-2xl" />
+                                </Button>
+                            ) : (
+                                <Button type="submit" className="w-full text-white bg-accent">
+                                    Reset
+                                </Button>
+                            )}
 
                             <p className="text-sm font-light text-babg-lightCardSecondary0 dark:text-gray-400">
                                 Remember password?{' '}

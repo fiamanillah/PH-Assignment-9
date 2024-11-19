@@ -8,6 +8,7 @@ import { useModal } from '../context/ModalContext'
 import { Helmet } from 'react-helmet-async'
 import InputField from '../components/InputField'
 import PasswordInput from '../components/PasswordInput'
+import { LiaSpinnerSolid } from 'react-icons/lia'
 
 function LogInPage() {
     const [email, setEmail] = useState('')
@@ -15,7 +16,7 @@ function LogInPage() {
     const navigate = useNavigate()
     const { showModal, hideModal } = useModal()
 
-    const { loginWithGoogle, loginWithEmail } = useAuth()
+    const { loginWithGoogle, loginWithEmail, loading } = useAuth()
 
     const handleEmailLogin = async e => {
         e.preventDefault()
@@ -137,10 +138,15 @@ function LogInPage() {
                                     Forgot password?
                                 </Link>
                             </div>
-
-                            <Button type="submit" className="w-full text-white bg-accent">
-                                Sign in
-                            </Button>
+                            {loading ? (
+                                <Button type="button" className="w-full text-white bg-accent flex justify-center">
+                                    <LiaSpinnerSolid className="animate-spin text-2xl" />
+                                </Button>
+                            ) : (
+                                <Button type="submit" className="w-full text-white bg-accent">
+                                    Sign in
+                                </Button>
+                            )}
 
                             <p className="text-sm font-light text-babg-lightCardSecondary0 dark:text-gray-400">
                                 Don’t have an account yet?{' '}

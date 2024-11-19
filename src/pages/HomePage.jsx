@@ -2,6 +2,8 @@ import { Helmet } from 'react-helmet-async'
 import Section from '../layouts/Section'
 import Slider from '../components/Slider'
 import Services from '../components/Services'
+import Testimonial from '../components/Testimonial'
+import BrandsSlide from '../components/BrandsSlide'
 
 function HomePage() {
     return (
@@ -11,7 +13,9 @@ function HomePage() {
             </Helmet>
             <div className="min-h-screen">
                 <Slider />
+                <BrandsSlide />
                 <Services />
+                <Testimonial />
             </div>
         </Section>
     )

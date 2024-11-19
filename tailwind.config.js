@@ -17,6 +17,9 @@ export default {
                 'mobile-lg': { max: '767px' },
                 'mobile-sm': { max: '639px' },
             },
+            aspectRatio: {
+                '4/3': '4 / 3',
+            },
             colors: {
                 // Light Mode Colors
                 background: '#f5f7fc', // Light Background

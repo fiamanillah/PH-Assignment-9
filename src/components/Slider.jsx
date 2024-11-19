@@ -47,7 +47,7 @@ function Slider() {
                             <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-transparent"></div>
 
                             <div className="relative z-10 p-4 text-white flex min-h-[500px] h-[70vh]">
-                                <div className="basis-1/3 ml-4 flex flex-col items-start justify-evenly">
+                                <div className="basis-1/3 tablet-lg:basis-1/2 mobile-lg:basis-full ml-4 flex flex-col items-start justify-evenly">
                                     <h1 className="text-darkPrimaryText">{slide.heading}</h1>
                                     <p className="text-darkPrimaryText">{slide.subheading}</p>
                                     <Button className="bg-accent not-prose">

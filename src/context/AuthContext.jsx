@@ -83,10 +83,13 @@ export const AuthProvider = ({ children }) => {
 
     const resetPassword = async email => {
         try {
+            setLoading(true)
             await sendPasswordResetEmail(auth, email)
         } catch (error) {
             console.error('Password Reset Error:', error)
             throw error
+        } finally {
+            setLoading(false)
         }
     }
 

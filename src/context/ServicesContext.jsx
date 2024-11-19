@@ -24,8 +24,30 @@ const ServicesProvider = ({ children }) => {
         fetchServices()
     }, [])
 
+    function addFeedback(feedback, serviceID) {
+        const service = services.find(serv => serv.id === serviceID)
+
+        if (!service) {
+            console.error('Service not found')
+            return
+        }
+
+        const updatedService = {
+            ...service,
+            feedbacks: [...(service.feedbacks || []), feedback],
+        }
+
+        const updatedServices = services.map(serv =>
+            serv.id === serviceID ? updatedService : serv
+        )
+
+        setServices(updatedServices)
+    }
+
     return (
-        <ServicesContext.Provider value={{ services, error }}>{children}</ServicesContext.Provider>
+        <ServicesContext.Provider value={{ services, error, addFeedback }}>
+            {children}
+        </ServicesContext.Provider>
     )
 }
 

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Section from './Section'
 import Button from '../components/Button'
 import MainNavBar from '../components/MainNavBar'
@@ -7,29 +7,42 @@ import useDarkMode from '../hooks/useDarkMode'
 import { useAuth } from '../context/AuthContext'
 import { LiaSpinnerSolid } from 'react-icons/lia'
 import Tooltip from '../components/Tooltip'
+import { useState } from 'react'
+import { CiMenuFries } from 'react-icons/ci'
+import { RxCross2 } from 'react-icons/rx'
 
 function Header() {
     const { darkMode } = useDarkMode()
     const { user, loading, logout } = useAuth()
+    const [showNav, setShowNav] = useState(false)
+    const navigate = useNavigate()
 
     const handleLogOut = () => {
         logout()
+        navigate('/login')
     }
     return (
-        <Section className={' shadow-lg shadow-white'}>
+        <Section className={'bg-lightCard dark:bg-darkCard'}>
             <div className="flex items-center justify-between w-full py-1">
                 <div className="flex items-center">
                     <Link to={'/'}>
                         {darkMode ? (
-                            <img className="h-16" src="/CareerCraft_White.svg" alt="" />
+                            <img className="h-16 mobile-sm:h-10" src="/CareerCraft_White.svg" alt="" />
                         ) : (
-                            <img className="h-16" src="/CareerCraft_Accent.svg" alt="" />
+                            <img className="h-16 mobile-sm:h-10" src="/CareerCraft_Accent.svg" alt="" />
                         )}
                     </Link>
-                    <div className="flex items-center">
+                    <div
+                        className={`flex items-center laptop-xl:fixed laptop-xl:bg-lightCardSecondary laptop-xl:dark:bg-darkCardSecondary laptop-xl:w-1/2 mobile-lg:w-2/3 laptop-xl:inset-y-0 z-20 laptop-xl:flex-col laptop-xl:right-0 laptop-xl:rounded-l-xl laptop-xl:overflow-hidden laptop-xl:p-3 laptop-xl:mt-20 mobile-sm:mt-16 duration-200 ${
+                            showNav ? 'laptop-xl:right-0' : 'laptop-xl:-right-full'
+                        }`}
+                    >
                         <MainNavBar />
                         {user && (
-                            <Button className="bg-accent text-darkPrimary" onClick={handleLogOut}>
+                            <Button
+                                className="bg-accent text-darkPrimary laptop-xl:w-full laptop-xl:bg-red-500 laptop-xl:hover:scale-100 laptop-xl:active:scale-100"
+                                onClick={handleLogOut}
+                            >
                                 Log Out
                             </Button>
                         )}
@@ -63,6 +76,16 @@ function Header() {
                     )}
 
                     <DarkModeSwitch />
+
+                    <button
+                        onClick={() => {
+                            setShowNav(prev => !prev)
+                        }}
+                        className="hidden laptop-xl:flex items-center justify-center text-xl w-10 h-10 rounded-full focus:outline-none transition-colors duration-300 
+               bg-lightCard dark:bg-darkCard border-2  dark:border-darkPrimary  dark:text-darkPrimaryText"
+                    >
+                        {showNav ? <RxCross2 /> : <CiMenuFries />}
+                    </button>
                 </div>
             </div>
         </Section>
