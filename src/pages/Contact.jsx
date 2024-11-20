@@ -88,7 +88,7 @@ function Contact() {
                                 placeholder="Your Email"
                                 required
                                 className={
-                                    'bg-lightCardSecondary border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-darkCardSecondary dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-accent dark:focus:border-accent'
+                                    'bg-lightCardSecondary border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-darkCardSecondary dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-accent dark:focus:border-accent '
                                 }
                             />
                         </div>
@@ -103,7 +103,7 @@ function Contact() {
                                 placeholder="Your Message"
                                 required
                                 className={
-                                    'bg-lightCardSecondary border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-darkCardSecondary dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-accent dark:focus:border-accent'
+                                    'bg-lightCardSecondary border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-darkCardSecondary dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-accent dark:focus:border-accent text-lightPrimaryText dark:text-darkPrimaryText'
                                 }
                             ></textarea>
                         </div>
@@ -112,7 +112,7 @@ function Contact() {
                         </Button>
                     </form>
                     <div className="basis-1/2">
-                        <img src="/Contact-us.png" alt="Contact Us" />
+                        <img src="/Contact-us.svg" alt="Contact Us" />
                     </div>
                 </div>
             </div>

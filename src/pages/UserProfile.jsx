@@ -32,15 +32,18 @@ function UserProfile() {
     }
 
     return (
-        <Section>
+        <Section className={'py-10'}>
             <Helmet>
                 <title>Career Craft | Profile</title>
             </Helmet>
-            <div className="min-h-screen w-full">
-                <div className="flex flex-col max-w-screen-lg mx-auto">
-                    <h1 className="text-2xl font-bold mb-6">Profile</h1>
-                    <div className="">
-                        <div className="w-32 h-32 rounded-full border-2 overflow-hidden">
+            <h1 className=" text-center font-bold mb-6">Profile</h1>
+            <div className="w-full flex gap-3 py-10 laptop-xl:flex-col-reverse">
+                <div className="w-1/2 laptop-xl:w-full self-center laptop-xl:flex laptop-xl:justify-center laptop-xl:my-20">
+                    <img className=" max-h-[400px]" src="/profile.svg" alt="" />
+                </div>
+                <div className="w-1/2 laptop-xl:w-full">
+                    <div>
+                        <div className="w-32 h-32 rounded-full border-2 overflow-hidden my-5">
                             <img
                                 className="w-full h-full object-cover"
                                 src={
@@ -53,8 +56,8 @@ function UserProfile() {
                         </div>
                     </div>
 
-                    <form className="flex-grow" onSubmit={handleUpdateProfile}>
-                        <div className="mb-4 w-full">
+                    <form className="w-auto" onSubmit={handleUpdateProfile}>
+                        <div className="mb-4">
                             <label className="block mb-2 text-sm font-medium">Full Name</label>
                             {isEditing ? (
                                 <input
