@@ -17,9 +17,10 @@ function MainNavBar() {
                     Home
                 </NavLink>
             </li>
+
             <li className=" duration-200 laptop-xl:w-full laptop-xl:rounded-lg laptop-xl:overflow-hidden laptop-xl:font-bold">
                 <NavLink
-                    to={'/page1'}
+                    to={'/career-tips'}
                     className={({ isActive }) =>
                         `py-2 px-4  rounded-full laptop-xl:rounded-none laptop-xl:w-full laptop-xl:block  ${
                             isActive
@@ -28,12 +29,12 @@ function MainNavBar() {
                         }`
                     }
                 >
-                    Page 1
+                    Career Tips
                 </NavLink>
             </li>
             <li className=" duration-200 laptop-xl:w-full laptop-xl:rounded-lg laptop-xl:overflow-hidden laptop-xl:font-bold">
                 <NavLink
-                    to={'/page2'}
+                    to={'/contact'}
                     className={({ isActive }) =>
                         `py-2 px-4  rounded-full laptop-xl:rounded-none laptop-xl:w-full laptop-xl:block  ${
                             isActive
@@ -42,21 +43,7 @@ function MainNavBar() {
                         }`
                     }
                 >
-                    Home
-                </NavLink>
-            </li>
-            <li className=" duration-200 laptop-xl:w-full laptop-xl:rounded-lg laptop-xl:overflow-hidden laptop-xl:font-bold">
-                <NavLink
-                    to={'/page3'}
-                    className={({ isActive }) =>
-                        `py-2 px-4  rounded-full laptop-xl:rounded-none laptop-xl:w-full laptop-xl:block  ${
-                            isActive
-                                ? 'bg-accent text-white'
-                                : 'text-lightPrimaryText  dark:text-darkPrimaryText '
-                        }`
-                    }
-                >
-                    Home
+                    Contact Us
                 </NavLink>
             </li>
         </ul>

@@ -1,6 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from '../App'
-import Page1 from '../pages/Page1'
 import Error from '../pages/Error'
 import HomePage from '../pages/HomePage'
 import LogInPage from '../pages/LogInPage'
@@ -9,6 +8,9 @@ import PrivateRoute from '../components/PrivateRoute'
 import ForgotPassword from '../pages/ForgotPassword'
 import UserProfile from '../pages/UserProfile'
 import ServiceDetails from '../pages/ServiceDetails'
+import TestimonialPage from '../pages/TestimonialPage'
+import Contact from '../pages/Contact'
+import CareerTips from '../pages/CareerTips'
 
 const router = createBrowserRouter([
     {
@@ -19,14 +21,7 @@ const router = createBrowserRouter([
                 index: true,
                 element: <HomePage />,
             },
-            {
-                path: 'page1',
-                element: (
-                    <PrivateRoute>
-                        <Page1 />
-                    </PrivateRoute>
-                ),
-            },
+
             {
                 path: 'login',
                 element: <LogInPage />,
@@ -38,6 +33,22 @@ const router = createBrowserRouter([
             {
                 path: 'reset-password',
                 element: <ForgotPassword />,
+            },
+            {
+                path: '/testimonials',
+                element: <TestimonialPage />,
+            },
+            {
+                path: '/contact',
+                element: <Contact />,
+            },
+            {
+                path: 'career-tips',
+                element: (
+                    <PrivateRoute>
+                        <CareerTips />
+                    </PrivateRoute>
+                ),
             },
             {
                 path: 'user-profile',

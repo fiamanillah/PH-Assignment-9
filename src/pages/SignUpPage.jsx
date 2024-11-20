@@ -4,7 +4,6 @@ import Section from '../layouts/Section'
 import { FcGoogle } from 'react-icons/fc'
 import { useAuth } from '../context/AuthContext'
 import { useState } from 'react'
-import { useModal } from '../context/ModalContext'
 import { Helmet } from 'react-helmet-async'
 import InputField from '../components/InputField'
 import PasswordInput from '../components/PasswordInput'
@@ -16,7 +15,6 @@ function SignUpPage() {
     const [displayName, setDisplayName] = useState('')
     const [photoURL, setPhotoURL] = useState('')
     const [error, setError] = useState('')
-    const { showModal, hideModal } = useModal()
 
     const { loginWithGoogle, registerWithEmail, user, loading } = useAuth()
     const navigate = useNavigate()
@@ -45,20 +43,6 @@ function SignUpPage() {
             navigate('/user-profile')
             console.log(user)
         } catch (error) {
-            showModal(
-                <div>
-                    <h2 className="text-xl font-bold">Failed to Sign Up</h2>
-                    <p>{error.message}</p>
-                    <Button
-                        className="mt-4 bg-blue-500 text-white p-2 rounded"
-                        onClick={() => {
-                            hideModal()
-                        }}
-                    >
-                        Try Again
-                    </Button>
-                </div>
-            )
             console.error('Registration error:', error.message)
         }
     }
@@ -68,20 +52,6 @@ function SignUpPage() {
             await loginWithGoogle()
             navigate('/user-profile')
         } catch (error) {
-            showModal(
-                <div>
-                    <h2 className="text-xl font-bold">Failed to Sign Up</h2>
-                    <p>{error.message}</p>
-                    <Button
-                        className="mt-4 bg-blue-500 text-white p-2 rounded"
-                        onClick={() => {
-                            hideModal()
-                        }}
-                    >
-                        Try Again
-                    </Button>
-                </div>
-            )
             console.error('Registration error:', error.message)
         }
     }

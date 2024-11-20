@@ -1,35 +1,18 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Button from '../components/Button'
 import Section from '../layouts/Section'
 // import { FcGoogle } from 'react-icons/fc'
 import { useAuth } from '../context/AuthContext'
 import { useState } from 'react'
-import { useModal } from '../context/ModalContext'
 import { Helmet } from 'react-helmet-async'
 import { LiaSpinnerSolid } from 'react-icons/lia'
 function ForgotPassword() {
     const [email, setEmail] = useState('')
     const { resetPassword, loading } = useAuth()
-    const navigate = useNavigate()
 
-    const { showModal, hideModal } = useModal()
     function handleResetPass(e) {
         e.preventDefault()
-        showModal(
-            <div>
-                <h2 className="text-xl font-bold">Password reset mail sent</h2>
-                <p>Please check your email and reset your password.</p>
-                <Button
-                    className="mt-4 bg-blue-500 text-white p-2 rounded"
-                    onClick={() => {
-                        navigate('/login')
-                        hideModal()
-                    }}
-                >
-                    Log In
-                </Button>
-            </div>
-        )
+
         resetPassword(email)
     }
 

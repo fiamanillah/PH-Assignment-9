@@ -3,8 +3,7 @@ import { useAuth } from '../context/AuthContext'
 import Section from '../layouts/Section'
 import { LiaSpinnerSolid } from 'react-icons/lia'
 import Button from '../components/Button'
-import { useNavigate } from 'react-router-dom'
-import { useModal } from '../context/ModalContext'
+
 import { Helmet } from 'react-helmet-async'
 
 function UserProfile() {
@@ -13,8 +12,6 @@ function UserProfile() {
     const [displayName, setDisplayName] = useState('')
     const [isEditing, setIsEditing] = useState(false)
     const [loading, setLoading] = useState(false)
-    const navigate = useNavigate()
-    const { showModal, hideModal } = useModal()
 
     async function handleUpdateProfile(e) {
         e.preventDefault()
@@ -22,49 +19,16 @@ function UserProfile() {
         try {
             await updateUserProfile(displayName, photoURL)
             setIsEditing(false)
-            showModal(
-                <div>
-                    <h2 className="text-xl font-bold">Profile Updated</h2>
-                    <p>Your profile has been successfully updated.</p>
-                    <Button className="mt-4 bg-blue-500 text-white p-2 rounded" onClick={hideModal}>
-                        Okay
-                    </Button>
-                </div>
-            )
         } catch (error) {
             console.error('Failed to update profile:', error.message)
-            showModal(
-                <div>
-                    <h2 className="text-xl font-bold">Update Failed</h2>
-                    <p>Please try again later.</p>
-                    <Button className="mt-4 bg-red-500 text-white p-2 rounded" onClick={hideModal}>
-                        Close
-                    </Button>
-                </div>
-            )
         } finally {
             setLoading(false)
         }
     }
 
     // Handle Sign Out
-    async function handleSignOut() {
-        showModal(
-            <div>
-                <h2 className="text-xl font-bold">You have successfully logged out.</h2>
-                <p>Do not forget to check out our latest updates next time!</p>
-                <Button
-                    className="mt-4 bg-blue-500 text-white p-2 rounded"
-                    onClick={() => {
-                        hideModal()
-                        logout()
-                        navigate('/login')
-                    }}
-                >
-                    Okay
-                </Button>
-            </div>
-        )
+    function handleSignOut() {
+        logout()
     }
 
     return (
@@ -138,7 +102,7 @@ function UserProfile() {
                         <div className="flex gap-4">
                             {isEditing ? (
                                 <Button
-                                    type="submit" // This is correct for the Save button
+                                    type="submit"
                                     className="bg-accent text-darkPrimary"
                                     disabled={loading}
                                 >
@@ -150,7 +114,7 @@ function UserProfile() {
                                 </Button>
                             ) : (
                                 <Button
-                                    type="button" // Ensure this is explicitly set to "button"
+                                    type="button"
                                     className="bg-accent text-darkPrimary"
                                     onClick={() => setIsEditing(true)}
                                 >
@@ -159,7 +123,7 @@ function UserProfile() {
                             )}
                             {isEditing ? (
                                 <Button
-                                    type="button" // Explicitly set this to "button" to prevent form submission
+                                    type="button"
                                     className="bg-red-500 text-white"
                                     onClick={() => {
                                         setIsEditing(false)
@@ -169,7 +133,7 @@ function UserProfile() {
                                 </Button>
                             ) : (
                                 <Button
-                                    type="button" // Explicitly set this to "button" to prevent form submission
+                                    type="button"
                                     className="bg-red-500 text-white"
                                     onClick={handleSignOut}
                                 >

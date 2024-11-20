@@ -1,4 +1,4 @@
-function InputField({ label, type, name, id, placeholder, value, onChange, required = false }) {
+function InputField({ label, type, name, id, placeholder, value,ref, onChange, required = false }) {
     return (
         <div className="mt-0">
             <label htmlFor={id} className="block mb-2 text-sm font-medium">
@@ -8,6 +8,7 @@ function InputField({ label, type, name, id, placeholder, value, onChange, requi
                 type={type}
                 name={name}
                 id={id}
+                ref={ref}
                 placeholder={placeholder}
                 value={value}
                 onChange={onChange}

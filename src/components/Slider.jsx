@@ -6,6 +6,7 @@ import { Autoplay, Pagination } from 'swiper/modules'
 import { useEffect, useState } from 'react'
 import Button from './Button'
 import Section from '../layouts/Section'
+import { Link } from 'react-router-dom'
 
 function Slider() {
     const [sliderData, setSliderData] = useState(null)
@@ -49,9 +50,11 @@ function Slider() {
                                 <div className="basis-1/3 tablet-lg:basis-1/2 mobile-lg:basis-full ml-4 flex flex-col items-start justify-evenly">
                                     <h1 className="text-darkPrimaryText">{slide.heading}</h1>
                                     <p className="text-darkPrimaryText">{slide.subheading}</p>
-                                    <Button className="bg-accent not-prose">
-                                        <a href={slide.buttonLink}>{slide.buttonText}</a>
-                                    </Button>
+                                    <Link to={slide.buttonLink}>
+                                        <Button className="bg-accent not-prose text-darkPrimaryText">
+                                            {slide.buttonText}
+                                        </Button>
+                                    </Link>
                                 </div>
                                 <div></div>
                             </div>

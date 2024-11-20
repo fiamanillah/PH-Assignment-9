@@ -12,6 +12,7 @@ import Button from '../components/Button'
 import { VscFeedback } from 'react-icons/vsc'
 import InputField from '../components/InputField'
 import { useModal } from '../context/ModalContext'
+import { Helmet } from 'react-helmet-async'
 
 const InfoItem = ({ icon: Icon, text }) => (
     <div className="flex items-center gap-2">
@@ -62,6 +63,9 @@ export default function ServiceDetails() {
 
     return (
         <Section>
+            <Helmet>
+                <title>Career Craft | Details</title>
+            </Helmet>
             <div className="bg-lightCard dark:bg-darkCard p-3 rounded-3xl border-2 border-lightCardSecondary dark:border-darkCardSecondary">
                 <div className="flex gap-3 tablet-lg:flex-col">
                     <img

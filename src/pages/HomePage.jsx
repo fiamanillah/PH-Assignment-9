@@ -5,7 +5,7 @@ import Services from '../components/Services'
 import Testimonial from '../components/Testimonial'
 import BrandsSlide from '../components/BrandsSlide'
 import SuccessStories from '../components/SucessStories'
-import FAQs from './FAQs'
+import FAQs from '../components/FAQs'
 
 function HomePage() {
     return (

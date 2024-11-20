@@ -41,7 +41,7 @@ function Header() {
                         )}
                     </Link>
                     <div
-                        className={`flex items-center laptop-xl:fixed laptop-xl:bg-lightCardSecondary laptop-xl:dark:bg-darkCardSecondary laptop-xl:w-1/2 mobile-lg:w-2/3 laptop-xl:inset-y-0 z-20 laptop-xl:flex-col laptop-xl:rounded-l-xl laptop-xl:overflow-hidden laptop-xl:p-3 laptop-xl:mt-20 mobile-sm:mt-16 duration-200  ${
+                        className={`flex items-center gap-2 laptop-xl:fixed laptop-xl:bg-lightCardSecondary laptop-xl:dark:bg-darkCardSecondary laptop-xl:w-1/2 mobile-lg:w-2/3 laptop-xl:inset-y-0 z-20 laptop-xl:flex-col laptop-xl:rounded-l-xl laptop-xl:overflow-hidden laptop-xl:p-3 laptop-xl:mt-20 mobile-sm:mt-16 duration-200  ${
                             showNav ? 'laptop-xl:right-0' : 'laptop-xl:-right-full'
                         }`}
                     >

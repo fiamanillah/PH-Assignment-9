@@ -4,7 +4,6 @@ import Section from '../layouts/Section'
 import { FcGoogle } from 'react-icons/fc'
 import { useAuth } from '../context/AuthContext'
 import { useState } from 'react'
-import { useModal } from '../context/ModalContext'
 import { Helmet } from 'react-helmet-async'
 import InputField from '../components/InputField'
 import PasswordInput from '../components/PasswordInput'
@@ -14,7 +13,6 @@ function LogInPage() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
-    const { showModal, hideModal } = useModal()
 
     const { loginWithGoogle, loginWithEmail, loading } = useAuth()
 
@@ -24,20 +22,6 @@ function LogInPage() {
             await loginWithEmail(email, password)
             await navigate('/user-profile')
         } catch (error) {
-            showModal(
-                <div>
-                    <h2 className="text-xl font-bold">Failed to Log in</h2>
-                    <p>{error.message}</p>
-                    <Button
-                        className="mt-4 bg-blue-500 text-white p-2 rounded"
-                        onClick={() => {
-                            hideModal()
-                        }}
-                    >
-                        Try Again
-                    </Button>
-                </div>
-            )
             console.error('Failed to log in:', error.message)
         }
     }
@@ -46,20 +30,6 @@ function LogInPage() {
             await loginWithGoogle()
             navigate('/user-profile')
         } catch (error) {
-            showModal(
-                <div>
-                    <h2 className="text-xl font-bold">Failed to Log In</h2>
-                    <p>{error.message}</p>
-                    <Button
-                        className="mt-4 bg-blue-500 text-white p-2 rounded"
-                        onClick={() => {
-                            hideModal()
-                        }}
-                    >
-                        Try Again
-                    </Button>
-                </div>
-            )
             console.error('Registration error:', error.message)
         }
     }
@@ -139,7 +109,10 @@ function LogInPage() {
                                 </Link>
                             </div>
                             {loading ? (
-                                <Button type="button" className="w-full text-white bg-accent flex justify-center">
+                                <Button
+                                    type="button"
+                                    className="w-full text-white bg-accent flex justify-center"
+                                >
                                     <LiaSpinnerSolid className="animate-spin text-2xl" />
                                 </Button>
                             ) : (

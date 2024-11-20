@@ -10,7 +10,7 @@ import {
     onAuthStateChanged,
     updateProfile,
 } from 'firebase/auth'
-
+import { toast } from 'react-toastify'
 const AuthContext = createContext()
 
 export const useAuth = () => useContext(AuthContext)
@@ -18,6 +18,19 @@ export const useAuth = () => useContext(AuthContext)
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+
+
+    const successToast = msg => {
+        toast.success(msg)
+    }
+
+    const infoToast = msg => {
+        toast.info(msg)
+    }
+
+    const errorToast = msg => {
+        toast.error(msg)
+    }
 
     const updateUserProfile = async (displayName, photoURL) => {
         if (auth.currentUser) {
@@ -27,8 +40,10 @@ export const AuthProvider = ({ children }) => {
                 // Fetch the updated user data after profile update
                 const updatedUser = auth.currentUser
                 setUser({ ...updatedUser, displayName, photoURL })
+                successToast('Profile updated successfully')
             } catch (error) {
                 console.error('Failed to update profile:', error)
+                errorToast(error.message)
                 throw error
             } finally {
                 setLoading(false)
@@ -46,8 +61,10 @@ export const AuthProvider = ({ children }) => {
             // Update the user's profile with name and photo URL
             updateUserProfile(displayName, photoURL)
             setUser(userCredential.user)
+            successToast('Successfully resgistered')
         } catch (error) {
             console.error('Registration Error:', error)
+            errorToast(error.message)
             throw error
         } finally {
             setLoading(false)
@@ -59,8 +76,10 @@ export const AuthProvider = ({ children }) => {
             setLoading(true)
             const userCredential = await signInWithEmailAndPassword(auth, email, password)
             setUser(userCredential.user)
+            successToast('Sussessfully logged in')
         } catch (error) {
             console.error('Login Error:', error)
+            errorToast(error.message)
             throw error
         } finally {
             setLoading(false)
@@ -73,8 +92,10 @@ export const AuthProvider = ({ children }) => {
             setLoading(true)
             const result = await signInWithPopup(auth, provider)
             setUser(result.user)
+            successToast('Sussessfully logged in')
         } catch (error) {
             console.error('Google Login Error:', error)
+            errorToast(error.message)
             throw error
         } finally {
             setLoading(false)
@@ -85,8 +106,10 @@ export const AuthProvider = ({ children }) => {
         try {
             setLoading(true)
             await sendPasswordResetEmail(auth, email)
+            infoToast('Passward reset email sent, please reset your password')
         } catch (error) {
             console.error('Password Reset Error:', error)
+            errorToast(error.message)
             throw error
         } finally {
             setLoading(false)
@@ -97,8 +120,10 @@ export const AuthProvider = ({ children }) => {
         try {
             setLoading(true)
             await signOut(auth)
+            infoToast('Logged out')
         } catch (error) {
             console.error('Logout Error:', error)
+            errorToast(error.message)
             throw error
         } finally {
             setUser(null)
