@@ -25,7 +25,7 @@ export default function Services() {
                         className="bg-lightCard dark:bg-darkCard p-3 border-2 border-lightCardSecondary dark:border-darkCardSecondary rounded-2xl flex flex-col justify-between"
                     >
                         <img
-                            className="max-h-[250px] w-full object-cover rounded-xl border-2 border-lightCardSecondary dark:border-darkCardSecondary "
+                            className="max-h-[250px] w-full aspect-video object-cover rounded-xl border-2 border-lightCardSecondary dark:border-darkCardSecondary "
                             src={service.image}
                             alt={service.image}
                         />
