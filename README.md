@@ -10,14 +10,14 @@ A dynamic platform designed to provide personalized career advice, guidance, and
 
 -   **User Authentication**: Allows users to register, log in using email/password or Google login.
 -   **Personalized Career Advice**: Access to various career counseling services with details such as pricing, counselor name, and session timing.
--   **Service Details**: Users can learn more about each service, leave comments/feedback, and view others' feedback.
+-   **Service Details**: Users can learn more about each service, leave comments/feedback.
 -   **Profile Management**: Users can update their profile information, including their name and photo URL.
 -   **Responsive Design**: Fully responsive layout ensuring smooth user experience across mobile, tablet, and desktop.
 -   **Error Handling**: Clear 404 page and error messages on failed actions.
 
 ## Tech Stack
 
--   **Frontend**: React, React Router, Daisy UI / Swiper Slider, Firebase
+-   **Frontend**: React, React Router, Swiper Slider, Firebase
 -   **Authentication**: Firebase Authentication (Email/Password, Google Login)
--   **Hosting**: Deployed using Netlify/Surge/Firebase
+-   **Hosting**: Deployed using Netlify
 -   **Styling**: Tailwind CSS (for responsive design)
