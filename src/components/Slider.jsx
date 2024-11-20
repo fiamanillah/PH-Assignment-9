@@ -5,7 +5,6 @@ import 'swiper/css/pagination'
 import { Autoplay, Pagination } from 'swiper/modules'
 import { useEffect, useState } from 'react'
 import Button from './Button'
-import { Link } from 'react-router-dom'
 import Section from '../layouts/Section'
 
 function Slider() {
@@ -51,7 +50,7 @@ function Slider() {
                                     <h1 className="text-darkPrimaryText">{slide.heading}</h1>
                                     <p className="text-darkPrimaryText">{slide.subheading}</p>
                                     <Button className="bg-accent not-prose">
-                                        <Link to={slide.buttonLink}>{slide.buttonText}</Link>
+                                        <a href={slide.buttonLink}>{slide.buttonText}</a>
                                     </Button>
                                 </div>
                                 <div></div>

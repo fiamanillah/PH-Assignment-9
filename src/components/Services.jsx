@@ -11,7 +11,7 @@ export default function Services() {
     const { services } = useServices()
     return (
         <Section className={'mt-5'}>
-            <div className="mx-auto max-w-screen-sm text-center">
+            <div className="mx-auto max-w-screen-sm text-center" id="services">
                 <h2 className="mb-4 text-4xl tracking-tight font-extrabold">Services</h2>
                 <p className="mb-8 font-light lg:mb-16 sm:text-xl">
                     Empowering your journey with personalized guidance and expert support to achieve
