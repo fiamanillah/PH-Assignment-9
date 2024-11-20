@@ -27,13 +27,21 @@ function Header() {
                 <div className="flex items-center">
                     <Link to={'/'}>
                         {darkMode ? (
-                            <img className="h-16 mobile-sm:h-10" src="/CareerCraft_White.svg" alt="" />
+                            <img
+                                className="h-16 mobile-sm:h-10"
+                                src="/CareerCraft_White.svg"
+                                alt=""
+                            />
                         ) : (
-                            <img className="h-16 mobile-sm:h-10" src="/CareerCraft_Accent.svg" alt="" />
+                            <img
+                                className="h-16 mobile-sm:h-10"
+                                src="/CareerCraft_Accent.svg"
+                                alt=""
+                            />
                         )}
                     </Link>
                     <div
-                        className={`flex items-center laptop-xl:fixed laptop-xl:bg-lightCardSecondary laptop-xl:dark:bg-darkCardSecondary laptop-xl:w-1/2 mobile-lg:w-2/3 laptop-xl:inset-y-0 z-20 laptop-xl:flex-col laptop-xl:right-0 laptop-xl:rounded-l-xl laptop-xl:overflow-hidden laptop-xl:p-3 laptop-xl:mt-20 mobile-sm:mt-16 duration-200 ${
+                        className={`flex items-center laptop-xl:fixed laptop-xl:bg-lightCardSecondary laptop-xl:dark:bg-darkCardSecondary laptop-xl:w-1/2 mobile-lg:w-2/3 laptop-xl:inset-y-0 z-20 laptop-xl:flex-col laptop-xl:rounded-l-xl laptop-xl:overflow-hidden laptop-xl:p-3 laptop-xl:mt-20 mobile-sm:mt-16 duration-200  ${
                             showNav ? 'laptop-xl:right-0' : 'laptop-xl:-right-full'
                         }`}
                     >
@@ -79,7 +87,7 @@ function Header() {
 
                     <button
                         onClick={() => {
-                            setShowNav(prev => !prev)
+                            showNav ? setShowNav(false) : setShowNav(true)
                         }}
                         className="hidden laptop-xl:flex items-center justify-center text-xl w-10 h-10 rounded-full focus:outline-none transition-colors duration-300 
                bg-lightCard dark:bg-darkCard border-2  dark:border-darkPrimary  dark:text-darkPrimaryText"
