@@ -139,11 +139,3 @@ npm run preview
   "vite": "^5.4.11"
 }
 ```
-
-## License
-
-This project is open-source and available under the [MIT License](LICENSE).
-
-## Contributors
-
--   **Your Name** _(Replace with actual contributors)_
