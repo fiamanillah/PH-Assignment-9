@@ -1,4 +1,4 @@
-<img src="https://i.ibb.co.com/yF4fHmjt/Screenshot-from-2025-02-08-16-44-44.png" alt="Screenshot-from-2025-02-08-16-44-44" style="width: 100%;">
+<img src="https://i.ibb.co.com/yF4fHmjt/Screenshot-from-2025-02-08-16-44-44.png" alt="Screenshot-from-2025-02-08-16-35-36" style="width: 100%;">
 
 # Career Craft Website
 
